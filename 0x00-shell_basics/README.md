@@ -8,3 +8,4 @@ Long format
 with user and group IDs displayed numerically
 And hidden files (starting with .).
 a script that creates a directory named my firstdirectory in the /tmp/ directory
+Move the file betty from /tmp/ to /tmp/myfirst directory.
