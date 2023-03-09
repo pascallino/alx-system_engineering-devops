@@ -3,4 +3,5 @@ print the user name
 print groups  
 change hello owner to betty
 empty file
-execute permission   
+execute permissio
+multiple execute permissionsn   
