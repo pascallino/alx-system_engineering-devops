@@ -1,0 +1,13 @@
+total 43
+drwx------ 2 u0_a169 u0_a169 3488 Mar 11 19:50 .
+drwx------ 3 u0_a169 u0_a169 3488 Mar 11 17:07 ..
+-rwx------ 1 u0_a169 u0_a169   32 Mar 11 16:58 0-hello_world
+-rwx------ 1 u0_a169 u0_a169   21 Mar 11 17:06 1-confused_smiley
+-rwx------ 1 u0_a169 u0_a169   28 Mar 11 17:24 2-hellofile
+-rwx------ 1 u0_a169 u0_a169   39 Mar 11 17:30 3-twofiles
+-rwx------ 1 u0_a169 u0_a169   35 Mar 11 17:34 4-lastlines
+-rwx------ 1 u0_a169 u0_a169   35 Mar 11 17:40 5-firstlines
+-rwx------ 1 u0_a169 u0_a169   40 Mar 11 17:14 6-third_line
+-rwx------ 1 u0_a169 u0_a169   36 Mar 11 19:37 8-cwd_state
+-rw------- 1 u0_a169 u0_a169  110 Mar 11 19:49 dir1
+-rw------- 1 u0_a169 u0_a169    0 Mar 11 19:50 ls-cwd_content
