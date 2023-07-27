@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+for file in *-*; do
+	part_after_dash="${file#*-}"
+	echo "$part_after_dash"
+done
