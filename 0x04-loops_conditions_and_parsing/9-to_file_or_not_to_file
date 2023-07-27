@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
 #test if file exist or empty
 
-file_path="$1"  # Replace this with the actual path to your school file
-
-if [ -e "$file_path" ]; then
+if [ -e "school" ]; then
     echo "school file exists"
     
-    if [ -s "$file_path" ]; then
+    if [ -s "school" ]; then
         echo "school file is not empty"
     else
         echo "school file is empty"
     fi
     
-    if [ -f "$file_path" ]; then
+    if [ -f "school" ]; then
         echo "school is a regular file"
     fi
 else
