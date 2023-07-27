@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Displays the contents of the current directory in list format.
 #   Only displays the part of the name after the first dash. 
-for file in *-*; do
-	part_after_dash="${file#*-}"
-	echo "$part_after_dash"
+LIST="$(ls -1)"
+for i in $LIST; do
+    echo "$i" | cut -d'-' -f2
 done
