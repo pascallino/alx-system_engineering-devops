@@ -5,8 +5,9 @@ while ((i<=10)); do
 	then
 		echo "Best School"
 		echo "Hi"
-	else
-		 echo "Best School"
+		((i++));
+		continue
 	fi
+		 echo "Best School"
 	((i++));
 done
