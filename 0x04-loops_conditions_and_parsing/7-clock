@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+i=0
+while ((i<=12)); do
+	j=1
+	while ((j<=59)); do
+		case "$j" in
+			1)
+				echo "Hour: $i"
+				echo "1";;
+			*)
+				echo "$j"
+		esac
+		((j++));
+	done
+	((i++))
+done
