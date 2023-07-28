@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#DISPLAY PROCESES MATCHING THE
+#THE WORD BASH
+ps -aux | grep bash
