@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#DISPLAY PROCESS WITH ATTRIBUTES
+ps -auxf
