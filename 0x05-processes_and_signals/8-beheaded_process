@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#KILL THE PROCESS  TO INFINITE AND BEYOND 
+#Kill with another method SIGKILL
+pkill -f  -SIGKILL "7-highlander"
