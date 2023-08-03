@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#ip -4 -o addr show | awk '{print $4}' | cut -d "/" -f 1
+# Get the active IPv4 IPs using ifconfig
+ipv4_ips=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | awk '{print $2}')
+echo "$ipv4_ips"
