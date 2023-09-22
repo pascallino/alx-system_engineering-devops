@@ -1,3 +1,4 @@
+# Using Puppet, create a file in /tmp. ad file school with contents
 $doc_root = '/tmp'
 
 # Ensure the /tmp/school directory exists with the specified permissions and ownership.
