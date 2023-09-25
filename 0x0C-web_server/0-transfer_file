@@ -2,7 +2,7 @@
 # Write a Bash script that transfers a file from our client to a server:
 
 if [ "$#" -lt 4 ]; then
-    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
     exit 1
 fi
 
@@ -10,7 +10,7 @@ fi
 file="$1"
 key="$4"
 user="$3"
-host="$4"
+host="$2"
 
 
-scp -i "$key" -o StrictHostKeyChecking=no "$file" "$user@$host~/"
+scp -i "$key" -o StrictHostKeyChecking=no "$file" "$user@$host:~/"
