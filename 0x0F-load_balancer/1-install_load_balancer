@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+#Installs and configures HAproxy in a load balancer server
+
+apt-get install -y --no-install-recommends software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.0
+apt-get update
+apt-get install -y  haproxy=2.0.\*
+
+echo "ENABLED=1" >> /etc/default/haproxy
+mv /etc/haproxy/haproxy.cfg{,.original}
+touch /etc/haproxy/haproxy.cfg
+
+printf %s "global
+    log 127.0.0.1 local0 notice
+    maxconn 2000
+    user haproxy
+    group haproxy
+defaults
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    retries 3
+    option redispatch
+    timeout connect  5000
+    timeout client  10000
+    timeout server  10000
+listen mystockcompanion
+    bind 0.0.0.0:80
+    mode http
+    stats enable
+    stats uri /haproxy?stats
+    balance roundrobin
+    option httpclose
+    option forwardfor
+    server 395768-web-01 52.91.148.97:80 check
+    server 395768-web-02 54.82.199.153:80 check
+" >> /etc/haproxy/haproxy.cfg
+
+service haproxy start
+ufw allow OpenSSH
+ufw allow 80/tcp
+ufw enable
+ufw reload
