@@ -1,35 +1,15 @@
 #!/usr/bin/env bash
-# Configure Nginx so that its HTTP response contains a custom header (on web-01 and web-02)
-# The name of the custom HTTP header must be X-Served-By
-
+# Configure Nginx so that its HTTP response contains a custom header
+# HTTP response contains a custom header (on web-01 and web-02)
 var=$(hostname)
+new_string="error_page 404 \/custom_404.html;\n location \/redirect_me {\n return 301 \$scheme:\/\/https://www.youtube.com/watch?v=QH2-TGUlwu4;"
 new_string2="server {\n\tadd_header X-Served-By $var;"
-apt-get update
-apt-get install -y nginx
 
-mkdir -p /etc/nginx/html
-touch /etc/nginx/html/index.html
-echo "Hello World!" > /etc/nginx/html/index.html
-touch /etc/nginx/html/404.html
-echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
-mkdir -p /etc/nginx/sites-available/
-printf %s "server {
-    listen 80;
-    listen [::]:80 default_server;
-    root   /etc/nginx/html;
-    index  index.html index.htm;
-
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-
-    error_page 404 /404.html;
-    location /404 {
-      root /etc/nginx/html;
-      internal;
-    }
-}" > /etc/nginx/sites-available/default
-
+apt-get update -y
+apt-get install nginx -y
+echo "Hello World!" > /usr/share/nginx/html/index.html
+mkdir -p /var/www/html
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+sudo sed -i -E "s/^[^#]+location \/ \{/$new_string/" /etc/nginx/sites-available/default
 sudo sed -i -E "s/^server \{/$new_string2/" /etc/nginx/sites-available/default
-service nginx start
-service nginx restart
+sudo service nginx start
