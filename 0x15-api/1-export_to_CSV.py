@@ -30,10 +30,10 @@ def fetchdata(employeeid):
     dict = {}
     list = []
     for task in tott:
-        dict['USER_ID'] = task["userId"]
+        dict['USER_ID'] = userid
         dict['USERNAME'] = username
-        dict['TASK_COMPLETED_STATUS'] = task['completed']
-        dict['TASK_TITLE'] = task["title"]
+        dict['TASK_COMPLETED_STATUS'] = task.get('completed')
+        dict['TASK_TITLE'] = task.get("title")
         list.append(dict)
         dict = {}
     # Now, let's save the data to a CSV file
