@@ -14,26 +14,24 @@ def fetchdata():
         return
     totalresult = {}
     for user in user_data:
-        ba = f'https://jsonplaceholder.typicode.com/todos?userId=\
-        {user.get("id")}'
-        base_rep = requests.get(ba)
+        baseurl = f'https://jsonplaceholder.typicode.com/todos?userId=\
+            {user.get("id")}'
+        base_rep = requests.get(baseurl)
         base_data = base_rep.json()
         tott = [task for task in base_data]
         username = user['username']
         userid = user['id']
-        result = {}
-        totalresult[str(userid)] = []
-        result[str(userid)] = []
+        result = []
         for task in tott:
-            result[str(userid)].append({
+            result.append({
                 "username": username,
                 "task": task["title"],
                 "completed": task["completed"]
                 })
-        totalresult[str(userid)].append(result[str(userid)])
+        totalresult[str(userid)] = result
     # Now, let's save the data to a JSON file
     filename = 'todo_all_employees.json'
-    with open(filename, 'a') as jsonfile:
+    with open(filename, 'w') as jsonfile:
         json.dump(totalresult, jsonfile)
 
 
