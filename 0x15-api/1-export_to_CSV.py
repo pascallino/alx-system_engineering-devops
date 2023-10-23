@@ -43,7 +43,7 @@ def fetchdata(employeeid):
         fieldnames = ['USER_ID', 'USERNAME',
                       'TASK_COMPLETED_STATUS', 'TASK_TITLE']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames,
-                                quoting=csv.QUOTE_ALL, delimiter=',')
+                                quoting=csv.QUOTE_ALL)
         # writer.writeheader()  # Write the CSV header
         # Write each dictionary as a CSV row
         for row in list:
