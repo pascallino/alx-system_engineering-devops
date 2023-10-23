@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Exports to-do list information of all employees to JSON format."""
 import requests
 import sys
 import csv
@@ -6,6 +7,7 @@ import json
 
 
 def fetchdata(employeeid):
+    """ do json file from aspi"""
     if employeeid is None:
         return
 
