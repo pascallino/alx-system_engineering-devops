@@ -24,9 +24,9 @@ def fetchdata():
         result = []
         for task in tott:
             result.append({
-                "username": username,
                 "task": task["title"],
-                "completed": task["completed"]
+                "completed": task["completed"],
+                "username": username
                 })
         totalresult[str(userid)] = result
     # Now, let's save the data to a JSON file
