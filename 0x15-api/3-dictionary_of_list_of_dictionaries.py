@@ -7,18 +7,12 @@ import sys
 
 def fetchdata():
     """ do json file from aspi"""
-    usersurl = 'https://jsonplaceholder.typicode.com/users/'
-    user_rep = requests.get(usersurl)
-    user_data = user_rep.json()
-    if user_rep.status_code != 200:
-        return
+    url = "https://jsonplaceholder.typicode.com/"
+    users = requests.get(url + "users/").json()
     totalresult = {}
-    for user in user_data:
-        baseurl = f'https://jsonplaceholder.typicode.com/todos?userId=\
-            {user.get("id")}'
-        base_rep = requests.get(baseurl)
-        base_data = base_rep.json()
-        tott = [task for task in base_data]
+    for user in users:
+        tott = requests.get(url + "todos",
+                            params={"userId": user.get("id")}).json()
         username = user['username']
         userid = user['id']
         result = []
