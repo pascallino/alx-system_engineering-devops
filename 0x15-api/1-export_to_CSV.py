@@ -39,15 +39,11 @@ def fetchdata(employeeid):
     # Now, let's save the data to a CSV file
     filename = f'{userid}.csv'
 
-    with open(filename, 'w', newline='') as csvfile:
-        fieldnames = ['USER_ID', 'USERNAME',
-                      'TASK_COMPLETED_STATUS', 'TASK_TITLE']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames,
-                                quoting=csv.QUOTE_ALL)
-        # writer.writeheader()  # Write the CSV header
-        # Write each dictionary as a CSV row
-        for row in list:
-            writer.writerow(row)
+    with open("{}.csv".format(userid), "w", newline="") as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        [writer.writerow(
+            [userid, username, t.get("completed"), t.get("title")]
+                ) for t in tott]
 
 
 if __name__ == '__main__':
