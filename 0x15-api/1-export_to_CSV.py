@@ -8,41 +8,22 @@ import requests
 import sys
 
 
-def fetchdata(employeeid):
+def fetchdata(user_id):
     """ Write a Python script that, using this REST API,
     for a given employee ID,
     returns information about his/her TODO list progress.
     """
-    if employeeid is None:
+    if user_id is None:
         return
-    baseurl = f'https://jsonplaceholder.typicode.com/todos?userId={employeeid}'
-    usersurl = f'https://jsonplaceholder.typicode.com/users/{employeeid}'
-    user_rep = requests.get(usersurl)
-    user_data = user_rep.json()
-    if user_rep.status_code != 200:
-        return
-    base_rep = requests.get(baseurl)
-    base_data = base_rep.json()
-    tott = [task for task in base_data]
-    username = user_data['name']
-    userid = user_data['id']
-    # Print the result
-    dict = {}
-    list = []
-    for task in tott:
-        dict['USER_ID'] = userid
-        dict['USERNAME'] = username
-        dict['TASK_COMPLETED_STATUS'] = task.get('completed')
-        dict['TASK_TITLE'] = task.get("title")
-        list.append(dict)
-        dict = {}
-    # Now, let's save the data to a CSV file
-    filename = f'{userid}.csv'
+    url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(url + "users/{}".format(user_id)).json()
+    username = user.get("username")
+    tott = requests.get(url + "todos", params={"userId": user_id}).json()
 
-    with open("{}.csv".format(userid), "w", newline="") as csvfile:
+    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         [writer.writerow(
-            [userid, username, t.get("completed"), t.get("title")]
+            [user_id, username, t.get("completed"), t.get("title")]
                 ) for t in tott]
 
 
