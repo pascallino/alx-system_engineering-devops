@@ -53,7 +53,6 @@ def count_words(subreddit, word_list, allwords={}, after="", count=0):
             print("")
             return
         allwords = sorted(allwords.items(), key=lambda kv: (-kv[1], kv[0]))
-        for k, v in allwords:
-            print("{}: {}".format(k, v))
+        [print("{}: {}".format(k, v)) for k, v in allwords]
     else:
         count_words(subreddit, word_list, allwords, after, count)
