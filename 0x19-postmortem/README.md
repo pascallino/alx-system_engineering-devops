@@ -29,7 +29,7 @@ Port Security: Implemented measures to ensure only authorized services can utili
 Conclusion
 By addressing the root cause of this incident and implementing corrective measures, we have taken steps to prevent future disruptions. Our goal is to maintain a stable and secure web service for all users.
 
-For more technical details, refer to the full postmortem report.
+For more technical details, refer to the full postmortem report => https://docs.google.com/document/d/1IA5b77ZWIAg55aNZRZVIlUBL4IICCYWkIgNmn2agnM0/edit.
 
 This README provides a brief overview of the incident and steps taken for resolution. Please refer to the complete postmortem report for a more comprehensive understanding.
 
