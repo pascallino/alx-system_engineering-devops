@@ -2,7 +2,7 @@
 """ Count it! """
 from requests import get
 
-
+REDDIT = "https://www.reddit.com/"
 HEADERS = {'user-agent': 'my-app/0.0.1'}
 
 
@@ -24,7 +24,7 @@ def count_words(subreddit, word_list, after="", word_dic={}):
                 print("{}: {}".format(w[0].lower(), w[1]))
         return None
 
-    url = "https://www.reddit.com/" + "r/{}/hot/.json".format(subreddit)
+    url = REDDIT + "r/{}/hot/.json".format(subreddit)
 
     params = {
         'limit': 100,
