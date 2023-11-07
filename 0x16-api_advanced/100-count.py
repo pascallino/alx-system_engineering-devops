@@ -35,12 +35,15 @@ def count_words(subreddit, word_list, after="", word_dic={}):
 
     if r.status_code != 200:
         return None
+
     try:
         js = r.json()
 
     except ValueError:
         return None
+
     try:
+
         data = js.get("data")
         after = data.get("after")
         children = data.get("children")
@@ -48,8 +51,11 @@ def count_words(subreddit, word_list, after="", word_dic={}):
             post = child.get("data")
             title = post.get("title")
             lower = [s.lower() for s in title.split(' ')]
+
             for w in word_list:
                 word_dic[w] += lower.count(w.lower())
+
     except:
         return None
+
     count_words(subreddit, word_list, after, word_dic)
