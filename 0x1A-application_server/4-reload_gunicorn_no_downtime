@@ -3,15 +3,5 @@
 #shellcheck disable=SC2009
 #!/bin/bash
 
-# Get the process IDs of Gunicorn
-gunicorn_pids=$(pgrep gunicorn)
-
-if [ -z "$gunicorn_pids" ]; then
-    exit 1
-fi
-
-# Send a graceful restart signal to the Gunicorn master process
-for pid in $gunicorn_pids; do
-    kill -HUP "$pid"
-done
-
+# Get the process IDs of Gunico
+ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
