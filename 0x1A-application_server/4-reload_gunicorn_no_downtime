@@ -2,9 +2,14 @@
 # Gracefully reloads Gunicorn.
 #shellcheck disable=SC2009
 
+# Find the process IDs of Gunicorn processes
+pids=$(pgrep -f gunicorn)
 
-# Send HUP signal to Gunicorn processes
-pkill -HUP -f gunicorn
+# Send HUP signal to each Gunicorn process
+for pid in $pids; do
+    kill -HUP "$pid"
+    sleep 1  # Adjust the sleep duration as needed
+done
 
 # Wait for old workers to finish processing requests
 while pgrep -f gunicorn >/dev/null; do
