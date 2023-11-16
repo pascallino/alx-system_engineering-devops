@@ -3,5 +3,10 @@
 #shellcheck disable=SC2009
 #!/bin/bash
 
-# Get the process IDs of Gunico
-ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
+# Send HUP signal to Gunicorn processes
+pkill -HUP -f gunicorn
+
+# Wait for old workers to finish processing requests
+while pgrep -f gunicorn >/dev/null; do
+    sleep 1
+done
