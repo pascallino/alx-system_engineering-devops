@@ -2,8 +2,11 @@
 # Gracefully reloads Gunicorn.
 #shellcheck disable=SC2009
 
-# Find the process IDs of Gunicorn processes
 pids=$(pgrep -f gunicorn)
+
+if [ -z "$pids" ]; then
+    exit 1
+fi
 
 # Send HUP signal to each Gunicorn process
 for pid in $pids; do
